@@ -40,7 +40,10 @@
         {% for comment in comments %}
         <div class="card">
             <div class="card-body">
-                <b>{{ comment.writer }}</b> : {{ comment.content }}
+                {% if comment.writer.username == 'user' %}
+                <b>{{ comment.writer.last_name }}{{ comment.writer.first_name}}</b>
+                {% else %}
+                <b>{{ comment.writer }}</b>{% endif %} : {{ comment.content }}
                 <small>{{ comment.created_at }}</small>
             </div>
         </div>
